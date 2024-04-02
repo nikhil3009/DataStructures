@@ -44,7 +44,7 @@ public class NumberofEnclaves_1020 {
         for(int i = 0; i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j] == 1 && vis[i][j] == 0){
-                    count++;
+                      count++;
                 }
             }
         }
