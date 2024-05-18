@@ -3,7 +3,7 @@ package Blind75;
 public class GroupAnagrams {
     public List<List<String>> groupAnagrams(String[] strs) {
 
-        HashMap<String,List<String>> ans = new HashMap<>();
+        HashMap<String, List<String>> ans = new HashMap<>();
 
         for(String s : strs){
             char[] temp = s.toCharArray();
