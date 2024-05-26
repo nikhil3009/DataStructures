@@ -47,7 +47,7 @@ public class AlienDictoinary {
 
             }
 
-            List<Integer> topo =  topo = toposort(K,adj);
+            List<Integer> topo  = toposort(K,adj);
             StringBuilder ans = new StringBuilder();
 
             for(int it:topo){
