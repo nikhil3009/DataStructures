@@ -21,6 +21,6 @@ public class GrapghValidTree {
                 }
             }
         }
-        return count == n ? true : false;
+        return count ==  ? true : false;
     }
 }

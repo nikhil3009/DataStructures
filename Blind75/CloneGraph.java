@@ -1,21 +1,25 @@
 package Blind75;
 
 public class CloneGraph {
-    public HashMap<Integer,Node> mp= new HashMap<>();
+    private Node clone(Node node, HashMap<Node,Node> mp){
+        Node newnode = new Node(node.val);
+        mp.put(node,newnode);
+        for(Node nei:node.neighbors){
+            if(!mp.containsKey(nei)){
+                newnode.neighbors.add(clone(nei,mp));
+            }
+            else{
+                newnode.neighbors.add(mp.get(nei));
+            }
+        }
+        return newnode;
+    }
     public Node cloneGraph(Node node) {
-
         if(node == null){
             return null;
         }
-        if(mp.containsKey(node.val)){
-            return mp.get(node.val);
-        }
-        Node newNode = new Node(node.val,new ArrayList<Node>());
-        mp.put(node.val,newNode);
-        for(Node nei : node.neighbors){
-            newNode.neighbors.add(cloneGraph(nei));
-        }
-        return newNode;
+        HashMap<Node,Node> mp = new HashMap<>();
+        return clone(node,mp);
 
     }
 }
