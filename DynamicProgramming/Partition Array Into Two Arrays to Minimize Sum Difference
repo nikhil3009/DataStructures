@@ -1,0 +1,42 @@
+class Solution {
+    public int minimumDifference(int[] nums) {
+        int n = nums.length;
+        int sum = 0;
+        for(int i =0;i<n;i++){
+            sum+=nums[i];
+        }
+        Boolean[][] res = new Boolean[n+1][sum+1];
+        helper(n,nums,sum,res);
+        int ans[] = new int[sum+1];
+        for(int i=0;i<(sum+1)/2;i++){
+            if(res[n][i] == true){
+                ans[i] = i;
+            }
+
+        }
+        int mn = Integer.MAX_VALUE;
+        for(int j=0;j<ans.length;j++){
+            mn = Math.min(mn,sum-2*ans[j]);
+        }
+        return mn;
+
+
+    }
+    public boolean helper(int n, int arr[], int sum, Boolean[][] memo) {
+        if (sum == 0) {
+            return true;
+        }
+        if (n == 0) {
+            return false;
+        }
+        if (memo[n][sum] != null) {
+            return memo[n][sum];
+        }
+        if (arr[n - 1] > sum) {
+            memo[n][sum] = helper(n - 1, arr, sum, memo);
+        } else {
+            memo[n][sum] = helper(n - 1, arr, sum - arr[n - 1], memo) || helper(n - 1, arr, sum, memo);
+        }
+        return memo[n][sum];
+    }
+}
