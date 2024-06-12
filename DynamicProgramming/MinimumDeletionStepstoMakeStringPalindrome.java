@@ -1,7 +1,7 @@
 package DynamicProgramming;
 
-public class MinimumInsertionStepstoMakeStringPalindrome {
-    public int minInsertions(String s) {
+public class MinimumDeletionStepstoMakeStringPalindrome {
+    public int minDeletions(String s) {
         StringBuilder temp = new StringBuilder(s);
         String t = temp.reverse().toString();
         return longestCommonSubsequence(s,t);
