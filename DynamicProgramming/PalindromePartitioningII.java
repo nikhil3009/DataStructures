@@ -25,8 +25,24 @@ public class PalindromePartitioningII {
             return dp[i][j];
         }
         int ans = Integer.MAX_VALUE;
+        int left = 0;
+        int right = 0;
         for (int k = i; k < j; k++) {
-            int temp = calculate(s, i, k, dp) + calculate(s, k + 1, j, dp) + 1;
+            if(dp[i][k] !=-1){
+                left = dp[i][k];
+            }
+            else{
+                left = calculate(s, i, k, dp);
+                dp[i][k] = left;
+            }
+            if(dp[k+1][j] != -1){
+                right = dp[k+1][j];
+            }
+            else{
+                right = calculate(s, k + 1, j, dp);
+                dp[k+1][j] = right;
+            }
+            int temp = left + right + 1;
             if (temp < ans) {
                 ans = temp;
             }
